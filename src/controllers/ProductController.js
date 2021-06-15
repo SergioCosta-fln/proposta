@@ -32,7 +32,8 @@ module.exports = {
             valorVenda: req.body.valorVenda,
             tipos: req.body.tipos,
             formaComercializacao: req.body.formaComercializacao
-        }
+        } 
+        
 
         console.log(product)
         if(product) {
@@ -43,11 +44,8 @@ module.exports = {
         } else {
             json.error = "Campos não enviados!";
         }
-        
 
         res.json(product);
     }
-
-   
     
 };
