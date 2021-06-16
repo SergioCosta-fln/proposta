@@ -15,7 +15,8 @@ module.exports = {
                 assunto: proposal[i].assunto,
                 data: proposal[i].data,
                 dataValidade: proposal[i].dataValidade,
-                idClient: proposal[i].idClient
+                idClient: proposal[i].idClient,
+                nameClient: proposal[i].nome
             });
         };
 

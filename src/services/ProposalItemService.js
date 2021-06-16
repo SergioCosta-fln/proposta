@@ -5,7 +5,7 @@ module.exports = {
     getAllProposalItem: () => {
         return new Promise( (resolve, reject) => {
 
-            db.query('SELECT * FROM proposalitems', (error, results) => {
+            db.query('SELECT PI.idProposta, PS.codigo, PI.idProduto, P.descricao, PI.quantidade, PI.valorUnitario, PI.desconto, PI.valorTotal FROM proposalitems PI INNER JOIN products P ON (P.id = PI.idProduto) INNER JOIN proposals PS ON (PS.id = PI.idProposta)', (error, results) => {
                 if(error) { reject(error); return; }
                 resolve(results);
             });

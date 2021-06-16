@@ -12,7 +12,9 @@ module.exports = {
             json.result.push({
                 id: proposalItem[i].id,
                 idProposta: proposalItem[i].idProposta,
+                codigoProposta: proposalItem[i].codigo,
                 idProduto: proposalItem[i].idProduto,
+                descricaoProduto: proposalItem[i].descricao,
                 quantidade: proposalItem[i].quantidade,
                 valorUnitario: proposalItem[i].valorUnitario,
                 desconto: proposalItem[i].desconto,

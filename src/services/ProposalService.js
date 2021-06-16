@@ -5,7 +5,7 @@ module.exports = {
     getAllProposal: () => {
         return new Promise( (resolve, reject) => {
 
-            db.query('SELECT * FROM proposals', (error, results) => {
+            db.query('SELECT PL.codigo, PL.assunto, PL.data, PL.dataValidade, PL.idClient, CL.nome FROM proposals PL INNER JOIN clients CL ON (CL.id = PL.idClient)', (error, results) => {
                 if(error) { reject(error); return; }
                 resolve(results);
             });
@@ -15,7 +15,7 @@ module.exports = {
     findProposalById: (id) => {
         return new Promise( (resolve, reject) => {
 
-            db.query('SELECT * FROM proposals WHERE id = ?', [id], (error, results) => {
+            db.query('SELECT PL.codigo, PL.assunto, PL.data, PL.dataValidade, PL.idClient, CL.nome AS NomeCliente FROM proposals PL INNER JOIN clients CL ON (CL.id = PL.idClient) WHERE PL.id = ?', [id], (error, results) => {
                 if(error) { reject(error); return; } 
                 if(results.length > 0) {
                     resolve(results[0]);
