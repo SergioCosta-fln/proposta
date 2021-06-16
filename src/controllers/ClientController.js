@@ -41,7 +41,6 @@ module.exports = {
         res.json(json);
     },
 
-
     newClient: async (req, res) => {
 
         let json = {error:'', result:{}}; 

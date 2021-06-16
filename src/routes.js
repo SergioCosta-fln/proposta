@@ -3,6 +3,7 @@ const router = express.Router();
 
 const ProductController = require('./controllers/ProductController');
 const ClientController = require('./controllers/ClientController');
+const ProposalController = require('./controllers/ProposalController');
 
 // Routes de Products
 router.get('/product', ProductController.allProduct);               // GET todos os produtos
@@ -17,5 +18,12 @@ router.get('/client/:id', ClientController.oneClient);              // GET somen
 router.post('/client', ClientController.newClient);                 // POST - Adcionando um cliente
 router.put('/client/:id', ClientController.editClient);             // PUT - alterar um cliente
 router.delete('/client/:id', ClientController.deleteClient);        // DELETE - deletar um cliente
+
+// Routes de Proposal
+router.get('/proposal', ProposalController.allProposal);                  // GET todos as propostas
+router.get('/proposal/:id', ProposalController.oneProposal);              // GET somente uma propostas
+router.post('/proposal', ProposalController.newProposal);                 // POST - Adcionando uma propostas
+router.put('/proposal/:id', ProposalController.editProposal);             // PUT - alterar uma propostas
+router.delete('/proposal/:id', ProposalController.deleteProposal);        // DELETE - deletar uma propostas
 
 module.exports = router;
