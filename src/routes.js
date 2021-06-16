@@ -4,6 +4,7 @@ const router = express.Router();
 const ProductController = require('./controllers/ProductController');
 const ClientController = require('./controllers/ClientController');
 const ProposalController = require('./controllers/ProposalController');
+const ProposalItemController = require('./controllers/ProposalItemController');
 
 // Routes de Products
 router.get('/product', ProductController.allProduct);               // GET todos os produtos
@@ -25,5 +26,12 @@ router.get('/proposal/:id', ProposalController.oneProposal);              // GET
 router.post('/proposal', ProposalController.newProposal);                 // POST - Adcionando uma propostas
 router.put('/proposal/:id', ProposalController.editProposal);             // PUT - alterar uma propostas
 router.delete('/proposal/:id', ProposalController.deleteProposal);        // DELETE - deletar uma propostas
+
+// Routes de Proposal Items
+router.get('/proposalitem', ProposalItemController.allProposalItem);                  // GET todos as propostas
+router.get('/proposalitem/:id', ProposalItemController.oneProposalItem);              // GET somente uma propostas
+router.post('/proposalitem', ProposalItemController.newProposalItem);                 // POST - Adcionando uma propostas
+router.put('/proposalitem/:id', ProposalItemController.editProposalItem);             // PUT - alterar uma propostas
+router.delete('/proposalitem/:id', ProposalItemController.deleteProposalItem);        // DELETE - deletar uma propostas
 
 module.exports = router;
