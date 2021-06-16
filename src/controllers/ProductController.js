@@ -22,6 +22,20 @@ module.exports = {
         res.json(json);
     },
 
+    oneProduct: async (req, res) => {
+        let json = {error:'', result:{}};   // Aqui ser´aum objeto, pq será somente um item
+
+        let id = req.params.id;
+        let product = await ProductService.findProductById(id);
+
+        if(product) {
+            json.result = product;            
+        }
+
+        res.json(json);
+    },
+
+
     newProduct: async (req, res) => {
 
         let json = {error:'', result:{}}; 
@@ -33,9 +47,7 @@ module.exports = {
             tipos: req.body.tipos,
             formaComercializacao: req.body.formaComercializacao
         } 
-        
 
-        console.log(product)
         if(product) {
             let productId = await ProductService.addProduct(product);
 
@@ -46,6 +58,38 @@ module.exports = {
         }
 
         res.json(product);
-    }
+    },
+
+    editProduct: async (req, res) => {
+        let json = {error:'', result:{}};   // Aqui ser´aum objeto, pq será somente um item
+
+        const product = {
+            id: req.params.id,
+            descricao: req.body.descricao,
+            descritivo: req.body.descritivo,
+            valorVenda: req.body.valorVenda,
+            tipos: req.body.tipos,
+            formaComercializacao: req.body.formaComercializacao
+        }
+
+        if(product) {
+            await ProductService.updateProduct(product);
+            json.result = Object.assign(product);
+        } else {
+            json.error = "Campos não enviados!";
+        }
+
+        res.json(json);
+    },
+
+    deleteProduct: async (req, res) => {
+
+        let json = {error:'', result:{}};   // Aqui ser´aum objeto, pq será somente um item
+        let id = req.params.id;
+
+        await ProductService.deleteProduct(req.params.id);
+
+        res.json(json);
+    }    
     
 };
